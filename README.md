@@ -1,5 +1,5 @@
 # schmeissen
-Dieses App wurde für das Kartespiel Schmeißen, Ziehen, Legen (dass wir von den Deustchen Leuten 
+Dieses App wurde fürs Kartespiel Schmeißen, Ziehen, Liegen (dass wir von den Deustchen Leuten 
 im Süd-Ost-Asien kennenzulernen gelernt haben) erstellt. Die Idee ist für dieses App als Online-Game
 erstellen sodass wir in der Quaräntine spielen kann.
 
