@@ -1,5 +1,7 @@
 from flask import Flask
+from flask_babel import Babel, lazy_gettext as _l
 from flask_login import LoginManager
+from flask_mail import Mail
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
 from flask_socketio import SocketIO
@@ -10,9 +12,11 @@ from config import ProductionConfig
 db = SQLAlchemy()
 migrate = Migrate()
 login = LoginManager()
-login.login_view = 'login'
-login.login_message = 'Log in to access this page.'
-socketio = SocketIO(app)
+login.login_view = 'auth.login'
+login.login_message = _l('Log in to access this page.')
+socketio = SocketIO()
+babel = Babel()
+mail = Mail()
 
 
 def create_app(config_class=ProductionConfig):
@@ -30,5 +34,13 @@ def create_app(config_class=ProductionConfig):
 
     login.init_app(app)
     socketio.init_app(app)
+    babel.init_app(app)
+    mail.init_app(app)
+
+    from app.auth import bp as auth_bp
+    app.register_blueprint(auth_bp)
+
+    from app.core import bp as core_bp
+    app.register_blueprint(core_bp)
 
     return app
