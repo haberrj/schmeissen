@@ -3,7 +3,7 @@
 import socketio
 
 from app import create_app, db, socketio
-from config import DevelopmentConfig, StagingConfig
+from config import DevelopmentConfig
 
 
 # Remove Config when deploying.

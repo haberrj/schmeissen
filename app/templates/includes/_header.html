@@ -1,0 +1,8 @@
+<header>
+    {% if current_user.is_anonymous %}
+    <a href="{{ url_for('auth.login') }}">{{ _('Login') }}</a>
+    <a href="{{ url_for('auth.register') }}">{{ _('Register') }}</a>
+    {% else %}
+    <a href="{{ url_for('auth.logout') }}">{{ _('Logout') }}</a>
+    {% endif %}
+</header>
