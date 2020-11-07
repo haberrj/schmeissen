@@ -45,3 +45,5 @@ unseren Raum um das App zu entwicklen.
 ### Anleitung
 
 ### Hinweis
+
+-   Fangen wir mit einem Barebones-App (nur ein Spiel-Session für uns) an
