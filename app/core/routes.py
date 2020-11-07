@@ -20,3 +20,13 @@ def index():
 @login_required
 def dashboard():
     return render_template('core/dashboard.html')
+
+
+@bp.route('/game')
+@login_required
+def game():
+    name = current_user.username
+    room = 'main'
+    session['name'] = name
+    session['room'] = room
+    return render_template('core/game.html', name=name, room=room)
