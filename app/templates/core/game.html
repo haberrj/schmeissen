@@ -1,23 +1,28 @@
 {% extends "application.html" %}
 
 {% block scripts %}
-    <script type="text/javascript" src="//code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.1/socket.io.js" integrity="sha512-AcZyhRP/tbAEsXCCGlziPun5iFvcSUpEz2jKkx0blkYKbxU81F+iq8FURwPn1sYFeksJ+sDDrI5XujsqSobWdQ==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+
     <script type="text/javascript" charset="utf-8">
         let socket;
-        $(document).ready(function(){
-            socket = io.connect('http://' + document.domain + ':' + location.port + '/game');
-            socket.on('connect', function() {
-                socket.emit('joined', {});
+
+        jQuery(function() {
+            socket = io('ws://' + document.domain + ':' + location.port + '/game');
+
+            socket.on('connect', () => {
+                socket.emit('joined', '');
             });
-            socket.on('status', function(data) {
+
+            socket.on('status', data => {
                 $('#chat').val($('#chat').val() + '<' + data.msg + '>\n');
                 $('#chat').scrollTop($('#chat')[0].scrollHeight);
             });
-            socket.on('message', function(data) {
+
+            socket.on('message', data => {
                 $('#chat').val($('#chat').val() + data.msg + '\n');
                 $('#chat').scrollTop($('#chat')[0].scrollHeight);
             });
+
             $('#text').keypress(function(e) {
                 var code = e.keyCode || e.which;
                 if (code == 13) {
@@ -29,9 +34,8 @@
         });
 
         function leave_session() {
-            socket.emit('left', {}, function() {
+            socket.emit('left', {}, () => {
                 socket.disconnect();
-
                 window.location.href = "{{ url_for('core.dashboard') }}";
             });
         }

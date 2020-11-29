@@ -1,10 +1,7 @@
-from flask import flash, redirect, render_template, request, session, url_for
-from flask_babel import _
+from flask import redirect, render_template, session, url_for
 from flask_login import current_user, login_required
 
-from app import db, socketio
 from app.core import bp
-from app.models import User
 
 
 @bp.route('/')
