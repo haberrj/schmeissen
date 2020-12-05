@@ -7,7 +7,7 @@ out the Docker settings and configurations.
 
 ### First time setup
 
-This is mainly for James.
+#### Version Control
 
 1.  Fork the repository from [here](https://github.com/haberrj/schmeissen).
 2.  Clone your forked repository.
@@ -23,7 +23,9 @@ This is mainly for James.
     $ git remote add upstream https://github.com/haberrj/schmeissen.git
     ```
 
-4.  Make sure you have python3 and pip installed.
+#### Installation
+
+1.  Make sure you have ```python3``` and ```pip``` installed.
 
     Linux/Mac/Windows
     ```
@@ -31,7 +33,7 @@ This is mainly for James.
     $ pip3 --version
     ```
 
-5.  Create your virtual environment and activate it.
+2.  Create your virtual environment and activate it.
 
     Linux/Mac
     ```
@@ -45,11 +47,26 @@ This is mainly for James.
     $ venv/Scripts/activate
     ```
 
-6.  Install the dependencies.
+3.  Install the backend dependencies.
 
     Linux/Mac/Windows
     ```
     $ pip install -r requirements.txt
+    ```
+
+4.  Make sure you have ```node``` and ```npm``` installed.
+
+    Linux/Mac/Windows
+    ```
+    $ node --version
+    $ npm --version
+    ```
+
+5.  Install the frontend dependencies.
+
+    Linux/Mac/Windows
+    ```
+    $ npm install
     ```
 
 ### Before working on your contributions
@@ -73,6 +90,23 @@ For every sub-stack, make sure you're in the top-level directory, you've
 activated the virtual environment, and all of your local dependencies are 
 up-to-date with the master repo before running any of the below commands.
 
+#### Email Server
+
+1.  Run the built-in ```Python``` SMTP server.
+
+    Linux/Mac
+    ```
+    $ python -m smtpd -n -c DebuggingServer localhost:8025
+    ```
+
+#### Frontend
+
+1.  Build the ```CSS``` files.
+
+    ```
+    $ npm run build:styles
+    ```
+
 #### Main Server
 
 1.  Run the ```Flask``` development server (normally we use ```$ flask run```, 
@@ -80,14 +114,6 @@ up-to-date with the master repo before running any of the below commands.
 
     ```
     $ python schmeissen.py
-    ```
-
-#### Email Server
-
-1.  Run the built-in ```Python``` SMTP server.
-
-    ```
-    $ python -m smtpd -n -c DebuggingServer localhost:8025
     ```
 
 ### Making changes
