@@ -2,12 +2,18 @@
 
 __READ THE [CONTRIBUTING](docs/CONTRIBUTING.md) DOC.__
 
-This app was created for the card game Schmeißen, Ziehen, Liegen (that we got 
-to know from the German people in South-East Asia). The idea is to create this 
-app as an online game so we can play in the quarantine.
+Schmeißen, Ziehen, Liegen is a german card game that we picked up from our 
+german friends during our time in Southeast Asia. Ever since, we've played 
+nearly every time that we've met up.
 
-The app would have the ability to reside on a server and this repo will be our 
-space to develop the app.
+Since the emergence of the COVID-19 pandemic, we've lost the ability to get 
+together, thus the inception of this project.
+
+### Documentation
+
+-   [Table of Contents](docs/)
+    -   [Contributing](docs/CONTRIBUTING.md)
+    -   [Testing](docs/TESTING.md)
 
 ### Codebase
 
@@ -19,6 +25,16 @@ space to develop the app.
 -   ```gunicorn``` WSGI
 -   ```SQLite``` development database
 -   ```MySQL``` production database
+
+#### Directory Structure
+
+```sh
+schmeissen/
+├── app         # Core backend
+├── docs        # Documentation
+├── migrations  # Database migrations
+└── src         # Frontend
+```
 
 ### Notes
 
