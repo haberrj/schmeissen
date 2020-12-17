@@ -1,45 +1,7 @@
 {% extends "application.html" %}
 
 {% block scripts %}
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
-
-    <script type="text/javascript" charset="utf-8">
-        let socket;
-
-        jQuery(function() {
-            socket = io('ws://' + document.domain + ':' + location.port + '/game');
-
-            socket.on('connect', () => {
-                socket.emit('joined', '');
-            });
-
-            socket.on('status', data => {
-                $('#chat').val($('#chat').val() + '<' + data.msg + '>\n');
-                $('#chat').scrollTop($('#chat')[0].scrollHeight);
-            });
-
-            socket.on('message', data => {
-                $('#chat').val($('#chat').val() + data.msg + '\n');
-                $('#chat').scrollTop($('#chat')[0].scrollHeight);
-            });
-
-            $('#text').keypress(function(e) {
-                var code = e.keyCode || e.which;
-                if (code == 13) {
-                    text = $('#text').val();
-                    $('#text').val('');
-                    socket.emit('text', {msg: text});
-                }
-            });
-        });
-
-        function leave_session() {
-            socket.emit('left', {}, () => {
-                socket.disconnect();
-                window.location.href = "{{ url_for('core.dashboard') }}";
-            });
-        }
-    </script>
+    <script type="text/javascript" src="{{ url_for('static', filename='dist/game.bundle.js') }}"></script>
 {% endblock scripts %}
 
 {% block app_content %}
@@ -47,5 +9,5 @@
 
     <textarea id="chat" cols="80" rows="20"></textarea><br><br>
     <input id="text" size="80" placeholder="Enter your message here"><br><br>
-    <a href="#" onclick="leave_session();">Leave Session</a>
+    <a id="exit" href="#">Leave Session</a>
 {% endblock app_content %}
