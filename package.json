@@ -7,7 +7,9 @@
     "doc": "docs"
   },
   "scripts": {
-    "build:styles": "NODE_ENV=production npx tailwindcss build ./src/css/style.css -o ./app/static/dist/style.css",
+    "dev:build": "webpack --mode development",
+    "dev:styles": "NODE_ENV=production npx tailwindcss build ./src/css/style.css -o ./app/static/dist/style.css",
+    "prod:build": "webpack --mode production",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -22,6 +24,11 @@
   "homepage": "https://github.com/haberrj/schmeissen#readme",
   "dependencies": {
     "autoprefixer": "^10.0.2",
+    "socket.io-client": "^2.3.1",
     "tailwindcss": "^2.0.1"
+  },
+  "devDependencies": {
+    "webpack": "^5.10.0",
+    "webpack-cli": "^4.2.0"
   }
 }
