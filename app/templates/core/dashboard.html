@@ -4,7 +4,13 @@
 {% endblock scripts %}
 
 {% block app_content %}
-    <h1>Dashboard</h1>
-
-    <a href="{{ url_for('core.game') }}">Join Session</a>
+    <div class="mx-72 my-4 px-8">
+        <h1 class="text-2xl">Dashboard</h1>
+        <div class="my-8">
+            <p>(Gonna implement some stats here)</p>
+        </div>
+        <div class="my-8">
+            <a class="bg-indigo-500 transition transform duration-300 ease-in-out hover:bg-indigo-400 rounded py-4 px-8 text-white" href="{{ url_for('core.game') }}">Join Session</a>
+        </div>
+    </div>
 {% endblock app_content %}

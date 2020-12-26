@@ -1,8 +1,14 @@
-<header>
-    {% if current_user.is_anonymous %}
-    <a href="{{ url_for('auth.login') }}">{{ _('Login') }}</a>
-    <a href="{{ url_for('auth.register') }}">{{ _('Register') }}</a>
-    {% else %}
-    <a href="{{ url_for('auth.logout') }}">{{ _('Logout') }}</a>
-    {% endif %}
+<header class="py-4">
+    <div class="container mx-auto flex flex-row items-center">
+        <h1 class="flex-auto text-2xl">
+            <a href="{{ url_for('core.index') }}">Schmei<span class="text-indigo-700">ß</span>en</a>
+        </h1>
+        <nav class="flex-auto font-sans">
+            <ul class="flex flex-row justify-end">
+                <li class="flex-inital">
+                    <a class="" href="{{ url_for('auth.login') }}">{{ _('Login') }}</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
 </header>

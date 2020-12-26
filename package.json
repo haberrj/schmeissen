@@ -8,8 +8,9 @@
   },
   "scripts": {
     "dev:build": "webpack --mode development",
-    "dev:styles": "NODE_ENV=production npx tailwindcss build ./src/css/style.css -o ./app/static/dist/style.css",
+    "dev:styles": "NODE_ENV=development npx tailwindcss build ./src/css/style.css -o ./app/static/dist/style.css",
     "prod:build": "webpack --mode production",
+    "prod:styles": "NODE_ENV=production npx tailwindcss build ./src/css/style.css -o ./app/static/dist/style.css",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
