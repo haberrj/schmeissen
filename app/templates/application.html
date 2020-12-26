@@ -1,22 +1,17 @@
 {% extends "base.html" %}
 
+{% block icons %}
+{% endblock icons %}
+
 {% block scripts %}
 {% endblock scripts %}
 
 {% block content %}
+    {% if current_user.is_anonymous %}
     {% include "includes/_header.html" %}
-
-    <hr>
-    
-    {% with messages = get_flashed_messages() %}
-    {% if messages %}
-    <ul>
-        {% for message in messages %}
-        <li>{{ message }}</li>
-        {% endfor %}
-    </ul>
+    {% else %}
+    {% include "includes/_sidebar.html" %}
     {% endif %}
-    {% endwith %}
 
     {% block app_content %}
     {% endblock app_content %}
